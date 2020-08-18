@@ -1,5 +1,1 @@
-# Index Page
-
-Yaya, it works!
-
-## Sub Heading
+# New PageThis is your new page at ``.

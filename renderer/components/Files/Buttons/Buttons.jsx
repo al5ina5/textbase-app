@@ -22,6 +22,7 @@ export default function Buttons() {
 
             var page = pagePath
             if (!pagePath.startsWith('/')) page = '/' + page
+            if (pagePath.endsWith('/')) page = page.substring(0, page.length - 1)
 
             var fileSplit = page.split('/')
             var targetFile = fileSplit.pop() + '.md'
