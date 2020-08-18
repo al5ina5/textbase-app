@@ -1,0 +1,42 @@
+.Files {
+    width: 300px;
+    padding: 2rem;
+    background-color: #495264;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    .list {
+        height: 100vh;
+    }
+
+    a {
+        display: block;
+        color: inherit;
+        opacity: 0.7;
+        transition: 0.15s ease all;
+    }
+
+    a:hover {
+        opacity: 1;
+    }
+    button {
+        margin-top: 0.5em;
+    }
+
+    input {
+        font-size: inherit;
+        padding: 0.5rem;
+        background-color: transparent;
+        outline: none;
+        margin-bottom: 0.5rem;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+    }
+
+    p {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+}

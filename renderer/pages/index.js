@@ -1,46 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import dynamic from 'next/dynamic'
 
-const Home = () => {
-  const [input, setInput] = useState('')
-  const [message, setMessage] = useState(null)
+const Files = dynamic(() => import('../components/Files/Files'))
+const Editor = dynamic(() => import('../components/Editor/Editor'))
+const Console = dynamic(() => import('../components/Console/Console'))
 
-  useEffect(() => {
-    const handleMessage = (event, message) => setMessage(message)
-    global.ipcRenderer.on('message', handleMessage)
+export default function Index() {
+    var [openedPath, setOpenedPath] = useState('')
+    var [editorContent, setEditorContent] = useState('')
 
-    return () => {
-      global.ipcRenderer.removeListener('message', handleMessage)
-    }
-  }, [])
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    global.ipcRenderer.send('message', input)
-    setMessage(null)
-  }
-
-  return (
-    <div>
-      <h1>Hello Electron!</h1>
-
-      {message && <p>{message}</p>}
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-      </form>
-
-      <style jsx>{`
-        h1 {
-          color: red;
-          font-size: 50px;
-        }
-      `}</style>
-    </div>
-  )
+    return <>
+        <Files setEditorContent={setEditorContent} setOpenedPath={setOpenedPath} />
+        <Editor editorContent={editorContent} openedPath={openedPath} />
+        {/* <Console /> */}
+    </>
 }
-
-export default Home

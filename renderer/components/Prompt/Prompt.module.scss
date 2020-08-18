@@ -1,0 +1,20 @@
+.Prompt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    display: flex;
+
+    .contain {
+        margin: auto;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+Id aliqua veniam dolore enim aute eiusmod ex. Velit exercitation aliquip eiusmod sint veniam velit aliqua consectetur incididunt minim et voluptate laboris. Adipisicing do aute deserunt magna est do. Magna irure id tempor laborum laborum cillum.
