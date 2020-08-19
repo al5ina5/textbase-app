@@ -7,7 +7,6 @@ import Buttons from './Buttons/Buttons'
 
 export default function Files(props) {
     var [pages, setPages] = useState([])
-
     var pagesPath = './pages'
 
     function readPagesFolder(callback) {
@@ -60,7 +59,7 @@ export default function Files(props) {
                     </>
                 ))}
             </div>
-            <Buttons />
+            <Buttons openedPath={props.openedPath} />
         </div>
     </>
 }

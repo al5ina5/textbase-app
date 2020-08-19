@@ -1,7 +1,9 @@
 import { useState } from 'react'
 var { fs, shelljs, shell } = global
 
-export default function Buttons() {
+import styles from './Button.module.scss'
+
+export default function Buttons(props) {
     var [pagePath, setPagePath] = useState(false)
     var [addPageInput, setAddPageInput] = useState(false)
 
@@ -10,6 +12,15 @@ export default function Buttons() {
         if (prompt != null) {
             alert(prompt)
         }
+    }
+    function nameToDomain(string) {
+        string = string || ''
+
+        return string
+            .toLowerCase()
+            .replace(/[^a-zA-Z0-9/ -]/gi, '')
+            .replace(/\s+/gi, '-')
+            .trim()
     }
 
     return <>
@@ -41,29 +52,34 @@ export default function Buttons() {
                     })
 
                     fs.writeFile('./pages/' + targetDirectory + '/' + targetFile, `# New Page\r\rThis is your new page at \`${page}\`.`, () => {
-
+                        props.openFile('./pages/' + targetDirectory + '/' + targetFile)
                     })
 
                     fs.exists('./pages/' + targetDirectory + '/index.md', (exists) => {
                         if (exists) return
 
                         fs.writeFile('./pages/' + targetDirectory + '/index.md', `# New Page\r\rThis is your new page at \`${targetDirectory}\`.`, () => {
-
+                            props.openFile('./pages/' + targetDirectory + '/index.md')
                         })
                     })
+
                 })
             })
         }}>
             <input type="text" placeholder="/about" onChange={(e) => {
                 setPagePath(e.target.value)
             }} />
+
+            {pagePath && <>
+                <button>Create Page</button></>}
         </form>
 
         <button
             style={{ backgroundColor: '#00afff' }}
             onClick={(e) => {
                 e.preventDefault()
-                shell.openExternal('http://localhost:4000')
+                console.log(props.openedPath)
+                // shell.openExternal(`http://localhost:4000/${pagePath}`)
             }}>Preview Website</button>
         <button
             style={{ backgroundColor: '#60c27d' }}

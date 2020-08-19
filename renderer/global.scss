@@ -20,6 +20,7 @@ body {
 
 button {
     -webkit-appearance: none;
+    width: 100%;
     border-radius: 0;
     border: none;
     background-color: rgb(235, 197, 94);
@@ -35,3 +36,8 @@ button:active {
 }
 
 textarea, select, input, button { outline: none; }
+
+
+a {
+    display: inline-block;
+}
